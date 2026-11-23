@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Yakiniku King Bangkok · Menu</title>
+    <meta name="description" content="Yakiniku King Bangkok: all-you-can-eat Japanese yakiniku. Courses and menu." />
+    <meta name="theme-color" content="#a71a1c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kanit:wght@500;700&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+Thai:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+      Yakiniku King Bangkok's menu, a DEMO for the MonBooking pitch: the LINE rich menu's "View menu" opens it,
+      with ?lang=th|en|ja for the language the customer chose. One static folder, no build, no tracking.
+      FROM THEIR OWN MATERIAL: the logo, the red, the three courses and their item counts, 120 minutes, tablet
+      ordering. PLACEHOLDERS: every price, every item and which course has it. Replace with theirs.
+      Photos: Unsplash (free to use, https://unsplash.com/license): hrkEJHZpUMs, xIVargormXU, DB4yVdAIXtM.
+    -->
+    <style>
+      :root {
+        --red: #a71a1c;
+        --red-deep: #7d1012;
+        --ink: #241c1a;
+        --muted: #7d6a5c;
+        --paper: #f6efe6;
+        --card: #ffffff;
+        --line: #eadccd;
+        --gold: #d9a441;
+        --display: 'Dela Gothic One', 'Kanit', 'Noto Sans JP', sans-serif;
+        --body: 'Noto Sans Thai', 'Noto Sans JP', system-ui, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--body);
+        line-height: 1.5;
+      }
+      html[lang='th'] {
+        --display: 'Kanit', 'Dela Gothic One', sans-serif;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      /* top bar */
+      .bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(10px);
+        border-bottom: 4px solid var(--red);
+      }
+      .bar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 16px;
+      }
+      .bar img {
+        height: 40px;
+        width: auto;
+      }
+      .langs {
+        display: flex;
+        padding: 4px;
+        border-radius: 999px;
+        background: #f1e6d9;
+      }
+      .langs button {
+        border: 0;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: none;
+        font: 800 13px/1 'Kanit', sans-serif;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        cursor: pointer;
+      }
+      .langs button[aria-pressed='true'] {
+        background: var(--red);
+        color: #fff;
+      }
+
+      /* hero */
+      .hero {
+        position: relative;
+        min-height: 300px;
+        display: flex;
+        align-items: flex-end;
+        color: #fff;
+        background: var(--ink) url('hero.jpg') center 40% / cover;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(36, 28, 26, 0.05) 20%, rgba(36, 28, 26, 0.92));
+      }
+      .hero .wrap {
+        position: relative;
+        width: 100%;
+        padding: 80px 20px 26px;
+      }
+      .kicker {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: var(--red);
+        font-size: 13px;
+        font-weight: 700;
+        animation: rise 0.6s both;
+      }
+      .hero h1 {
+        margin: 10px 0 6px;
+        font: 400 clamp(32px, 9vw, 50px) / 1.08 var(--display);
+        animation: rise 0.6s 0.08s both;
+      }
+      html[lang='th'] .hero h1 {
+        font-weight: 700;
+      }
+      .hero p {
+        margin: 0;
+        max-width: 34em;
+        color: #f1e0d6;
+        font-size: 15px;
+        animation: rise 0.6s 0.16s both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 0;
+        list-style: none;
+        animation: rise 0.6s 0.24s both;
+      }
+      .facts li {
+        padding: 6px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        padding: 28px 16px 8px;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 14px;
+        font: 400 24px/1.2 var(--display);
+      }
+      html[lang='th'] h2 {
+        font-weight: 700;
+      }
+      h2::before {
+        content: '';
+        width: 8px;
+        height: 24px;
+        border-radius: 4px;
+        background: var(--red);
+      }
+
+      /* courses: choosing one shows what it includes below */
+      .courses {
+        display: grid;
+        gap: 12px;
+      }
+      .course {
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: 14px;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        background: var(--card);
+        box-shadow: 0 10px 30px rgba(120, 40, 20, 0.08);
+        text-align: left;
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .course:active {
+        transform: scale(0.99);
+      }
+      .course[aria-pressed='true'] {
+        border-color: var(--red);
+      }
+      .course img {
+        width: 112px;
+        height: 112px;
+        border-radius: 14px;
+        object-fit: cover;
+      }
+      .course .top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .course h3 {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.3;
+      }
+      .price {
+        flex: none;
+        font: 400 22px/1 var(--display);
+        color: var(--red);
+      }
+      .course p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13.5px;
+      }
+      .tag {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: #fbeee6;
+        color: var(--red);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .course[aria-pressed='true'] .tag {
+        background: var(--red);
+        color: #fff;
+      }
+      .note {
+        margin: 12px 4px 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* category chips */
+      .chips {
+        position: sticky;
+        top: 64px;
+        z-index: 5;
+        display: flex;
+        gap: 8px;
+        padding: 10px 16px;
+        overflow-x: auto;
+        background: var(--paper);
+        scrollbar-width: none;
+      }
+      .chips::-webkit-scrollbar {
+        display: none;
+      }
+      .chips a {
+        flex: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px 7px 8px;
+        border-radius: 999px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .chips svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* items */
+      .cat {
+        padding-top: 22px;
+        scroll-margin-top: 120px;
+      }
+      .cat h2 svg {
+        width: 34px;
+        height: 34px;
+      }
+      .cat h2::before {
+        display: none;
+      }
+      .items {
+        display: grid;
+        gap: 1px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: var(--line);
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        background: var(--card);
+        transition: opacity 0.25s;
+      }
+      .item .name {
+        flex: 1;
+        font-weight: 600;
+        font-size: 15.5px;
+      }
+      .item .sub {
+        display: block;
+        color: var(--muted);
+        font-weight: 400;
+        font-size: 12.5px;
+      }
+      .item .in {
+        flex: none;
+        display: flex;
+        gap: 4px;
+      }
+      .item .in b {
+        width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        border-radius: 6px;
+        background: #f1e6d9;
+        color: #b9a796;
+        font: 700 11px/1 'Kanit', sans-serif;
+      }
+      .item .in b.on {
+        background: var(--ink);
+        color: #fff;
+      }
+      .pop {
+        margin-left: 8px;
+        padding: 1px 8px;
+        border-radius: 999px;
+        background: var(--gold);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        vertical-align: 2px;
+      }
+      .item.out {
+        opacity: 0.35;
+      }
+      .item.out .name {
+        text-decoration: line-through;
+        text-decoration-color: rgba(36, 28, 26, 0.4);
+      }
+
+      /* booking call */
+      .book {
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, rgba(246, 239, 230, 0), var(--paper) 30%);
+      }
+      .book a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        max-width: 688px;
+        margin: 0 auto;
+        padding: 16px;
+        border-radius: 999px;
+        background: var(--red);
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 12px 30px rgba(167, 26, 28, 0.35);
+      }
+      footer {
+        padding: 24px 16px 8px;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="wrap">
+        <img src="logo.png" alt="Yakiniku King" width="113" height="40" />
+        <div class="langs" role="group" aria-label="Language">
+          <button type="button" data-lang="th">TH</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="ja">JP</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="wrap">
+        <span class="kicker" data-t="kicker"></span>
+        <h1 data-t="title"></h1>
+        <p data-t="lead"></p>
+        <ul class="facts">
+          <li data-t="fact1"></li>
+          <li data-t="fact2"></li>
+          <li data-t="fact3"></li>
+        </ul>
+      </div>
+    </div>
+
+    <main class="wrap">
+      <section>
+        <h2 data-t="courses"></h2>
+        <div class="courses" id="courses"></div>
+        <p class="note" data-t="kids"></p>
+      </section>
+      <nav class="chips" id="chips" aria-label="Categories"></nav>
+      <div id="menu"></div>
+      <footer data-t="footer"></footer>
+    </main>
+
+    <div class="book">
+      <a id="book" href="https://line.me/R/ti/p/@491fwluf"
+        ><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="16" rx="3" />
+          <path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4" /></svg
+        ><span data-t="book"></span
+      ></a>
+    </div>
+
+    <script>
+      // Words of the page in each language.
+      const T = {
+        th: {
+          kicker: 'สาขากรุงเทพฯ',
+          title: 'เมนูปิ้งย่างบุฟเฟต์',
+          lead: 'ปิ้งย่างสไตล์ญี่ปุ่นไม่อั้น เลือกคอร์ส แล้วสั่งผ่านแท็บเล็ตที่โต๊ะได้ตลอด 120 นาที',
+          fact1: '120 นาที', fact2: 'สั่งผ่านแท็บเล็ต', fact3: 'เปิด 11:00–22:00',
+          courses: 'เลือกคอร์ส', include: 'แตะเพื่อดูเมนูในคอร์ส', chosen: 'เมนูของคอร์สนี้แสดงด้านล่าง',
+          kids: 'เด็ก 6–12 ปี ลดครึ่งราคา ต่ำกว่า 6 ปี ฟรี ราคายังไม่รวมค่าบริการและภาษีมูลค่าเพิ่ม',
+          hot: 'แนะนำ', book: 'จองโต๊ะทาง LINE',
+          footer: 'เมนูตัวอย่างสำหรับการสาธิต ราคาและรายการอาหารอาจแตกต่างจากจริง',
+        },
+        en: {
+          kicker: 'Bangkok branch',
+          title: 'All-you-can-eat yakiniku',
+          lead: 'Japanese barbecue, as much as you like. Pick a course, then order from the tablet at your table for 120 minutes.',
+          fact1: '120 minutes', fact2: 'Order by tablet', fact3: 'Open 11:00–22:00',
+          courses: 'Choose a course', include: 'Tap to see what it includes', chosen: 'Its dishes are shown below',
+          kids: 'Children 6–12 half price, under 6 free. Prices exclude service charge and VAT.',
+          hot: 'Popular', book: 'Book a table on LINE',
+          footer: 'Sample menu for a demo. Prices and dishes may differ from the restaurant’s.',
+        },
+        ja: {
+          kicker: 'バンコク店',
+          title: '焼肉食べ放題メニュー',
+          lead: 'コースを選んで、席のタブレットから120分間好きなだけ。',
+          fact1: '120分', fact2: 'タブレット注文', fact3: '営業 11:00–22:00',
+          courses: 'コースを選ぶ', include: 'タップで内容を表示', chosen: '下にこのコースのメニューを表示中',
+          kids: '6〜12歳は半額、6歳未満は無料。サービス料・VAT別。',
+          hot: '人気', book: 'LINEで席を予約',
+          footer: 'デモ用のサンプルメニューです。価格・内容は実際と異なる場合があります。',
+        },
+      }
+
+      // The three courses, as on the booking platform. Each later course has everything in the one before.
+      const COURSES = [
+        { key: 'S', img: 'select.jpg', price: 599, items: 59,
+          name: { th: 'คอร์สซีเลคท์', en: 'Select Course', ja: 'セレクトコース' },
+          desc: { th: 'หมู ไก่ เนื้อซี่โครง เครื่องเคียง และของหวาน', en: 'Pork, chicken, beef short rib, sides and dessert.', ja: '豚・鶏・牛カルビ、サイド、デザート。' } },
+        { key: 'K', img: 'king.jpg', price: 799, items: 100,
+          name: { th: 'คอร์สคิง', en: 'King Course', ja: 'きんぐコース' },
+          desc: { th: 'คอร์สซิกเนเจอร์ เนื้อคิง ลิ้นวัวหั่นหนา ข้าวและเส้น', en: 'Our signature: King cuts, thick-sliced tongue, rice and noodles.', ja: '看板コース。きんぐ名物の肉、厚切りタン、ご飯・麺。' } },
+        { key: 'R', img: 'royal.jpg', price: 1099, items: 110,
+          name: { th: 'คอร์สรอยัล', en: 'Royal Course', ja: 'ロイヤルコース' },
+          desc: { th: 'ทุกอย่างในคอร์สคิง เพิ่มเนื้อลายหินอ่อนพรีเมียม', en: 'Everything in King plus premium marbled cuts.', ja: 'きんぐコースの全品に、霜降りの上質部位をプラス。' } },
+      ]
+      const COUNT = { th: (n) => `${n} รายการ`, en: (n) => `${n} items`, ja: (n) => `${n}品` }
+
+      // Small drawings for each category, in the restaurant's colours.
+      const ICON = {
+        beef: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M8 22c2-8 12-12 20-9 6 2 6 9 0 12-7 4-18 4-20-3z" fill="#c9443a"/><path d="M12 20c5-4 11-5 15-3" stroke="#f3c9b8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>',
+        tongue: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><ellipse cx="20" cy="21" rx="12" ry="8" fill="#e88a86"/><path d="M12 21h16M14 17h12M14 25h12" stroke="#c9605c" stroke-width="1.6"/></svg>',
+        pork: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><rect x="8" y="12" width="24" height="16" rx="4" fill="#f0b3a6"/><path d="M8 17h24M8 23h24" stroke="#fff" stroke-width="2.4"/></svg>',
+        chicken: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M14 26c-4-4-2-14 8-14 6 0 8 6 5 10-2 3-6 3-8 5z" fill="#e2a15a"/><path d="M14 26l-4 4" stroke="#f6e7c8" stroke-width="3.4" stroke-linecap="round"/></svg>',
+        sea: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M28 14c-8-4-18 2-17 10 1 5 7 6 11 3l-3-5c4 1 8-2 9-8z" fill="#ef8a5a"/><circle cx="25" cy="15" r="1.6" fill="#241c1a"/></svg>',
+        rice: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M9 20h22c0 7-5 11-11 11S9 27 9 20z" fill="#a71a1c"/><path d="M10 20c1-6 19-6 20 0z" fill="#fff"/></svg>',
+        side: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><ellipse cx="20" cy="24" rx="12" ry="5" fill="#fff" stroke="#eadccd"/><path d="M12 22c2-6 6-9 9-6 3-5 8-2 7 5z" fill="#d94b2b"/><path d="M15 20c3-2 6-2 9 0" stroke="#6fae54" stroke-width="2.2" fill="none"/></svg>',
+        dessert: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M14 20l6 13 6-13z" fill="#d9a441"/><circle cx="20" cy="17" r="7" fill="#fff" stroke="#eadccd"/><circle cx="20" cy="10" r="2.4" fill="#a71a1c"/></svg>',
+        drink: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><rect x="12" y="13" width="13" height="17" rx="2" fill="#f2b33a"/><path d="M25 16h3a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-3" stroke="#f2b33a" stroke-width="2.4" fill="none"/><path d="M11 14c0-4 15-4 15 0z" fill="#fff"/></svg>',
+      }
+
+      // The dishes, and which course includes each (S, K, R). All placeholders for the demo.
+      const MENU = [
+        { key: 'beef', icon: 'beef', name: { th: 'เนื้อวัว', en: 'Beef', ja: '牛肉' }, items: [
+          { in: 'SKR', hot: 1, n: { th: 'คาลบิคิง', en: 'King kalbi', ja: 'きんぐカルビ' }, s: { th: 'ซอสสูตรพิเศษ', en: 'Our house sauce', ja: '秘伝のタレ' } },
+          { in: 'SKR', n: { th: 'เนื้อซี่โครงหมักซอส', en: 'Marinated short rib', ja: '牛カルビ(タレ)' } },
+          { in: 'KR', n: { th: 'ฮารามิ', en: 'Harami skirt steak', ja: 'ハラミ' } },
+          { in: 'KR', n: { th: 'เนื้อสันนอกหั่นหนา', en: 'Thick-cut sirloin', ja: '厚切りサーロイン' } },
+          { in: 'R', hot: 1, n: { th: 'คาลบิลายหินอ่อนพรีเมียม', en: 'Premium marbled kalbi', ja: '特選霜降りカルビ' } },
+          { in: 'R', n: { th: 'เนื้อสะโพกสไลซ์ย่างไฟ', en: 'Seared beef rump slices', ja: '炙りランプ' } },
+        ] },
+        { key: 'tongue', icon: 'tongue', name: { th: 'ลิ้นวัว', en: 'Tongue', ja: 'タン' }, items: [
+          { in: 'SKR', n: { th: 'ลิ้นวัวเกลือต้นหอม', en: 'Salted tongue with leek', ja: 'ねぎ塩タン' } },
+          { in: 'KR', hot: 1, n: { th: 'ลิ้นวัวหั่นหนา', en: 'Thick-sliced tongue', ja: '厚切りタン' } },
+          { in: 'R', n: { th: 'ลิ้นวัวพรีเมียม', en: 'Premium tongue', ja: '上タン塩' } },
+        ] },
+        { key: 'pork', icon: 'pork', name: { th: 'หมู', en: 'Pork', ja: '豚肉' }, items: [
+          { in: 'SKR', n: { th: 'หมูสามชั้น', en: 'Pork belly', ja: '豚バラ' } },
+          { in: 'SKR', n: { th: 'หมูหมักมิโซะเผ็ด', en: 'Spicy miso pork', ja: 'ピリ辛味噌豚' } },
+          { in: 'KR', n: { th: 'คอหมูย่าง', en: 'Pork jowl', ja: '豚トロ' } },
+        ] },
+        { key: 'chicken', icon: 'chicken', name: { th: 'ไก่', en: 'Chicken', ja: '鶏肉' }, items: [
+          { in: 'SKR', n: { th: 'สะโพกไก่ซอส', en: 'Chicken thigh in sauce', ja: '鶏もも(タレ)' } },
+          { in: 'SKR', n: { th: 'ไก่เกลือกระเทียม', en: 'Garlic-salt chicken', ja: '鶏にんにく塩' } },
+        ] },
+        { key: 'sea', icon: 'sea', name: { th: 'ซีฟู้ด', en: 'Seafood', ja: '海鮮' }, items: [
+          { in: 'SKR', n: { th: 'ปลาหมึก', en: 'Squid', ja: 'イカ' } },
+          { in: 'KR', n: { th: 'กุ้ง', en: 'Prawns', ja: 'エビ' } },
+          { in: 'R', n: { th: 'หอยเชลล์เนย', en: 'Butter scallops', ja: 'ホタテバター' } },
+        ] },
+        { key: 'rice', icon: 'rice', name: { th: 'ข้าวและเส้น', en: 'Rice & noodles', ja: 'ご飯・麺' }, items: [
+          { in: 'SKR', n: { th: 'ข้าวสวย', en: 'Steamed rice', ja: 'ライス' } },
+          { in: 'KR', n: { th: 'บิบิมบับหม้อหิน', en: 'Stone-pot bibimbap', ja: '石焼ビビンバ' } },
+          { in: 'KR', n: { th: 'บะหมี่เย็น', en: 'Cold noodles', ja: '冷麺' } },
+          { in: 'KR', n: { th: 'ข้าวต้มไข่', en: 'Egg rice porridge', ja: 'たまごクッパ' } },
+        ] },
+        { key: 'side', icon: 'side', name: { th: 'เครื่องเคียง', en: 'Sides', ja: 'サイド' }, items: [
+          { in: 'SKR', n: { th: 'กิมจิ', en: 'Kimchi', ja: 'キムチ' } },
+          { in: 'SKR', n: { th: 'สลัดเกาหลี', en: 'Korean salad', ja: 'チョレギサラダ' } },
+          { in: 'SKR', n: { th: 'นามูล', en: 'Namul vegetables', ja: 'ナムル' } },
+          { in: 'SKR', n: { th: 'ซุปสาหร่าย', en: 'Seaweed soup', ja: 'わかめスープ' } },
+          { in: 'KR', n: { th: 'เอดามาเมะ', en: 'Edamame', ja: '枝豆' } },
+        ] },
+        { key: 'dessert', icon: 'dessert', name: { th: 'ของหวาน', en: 'Desserts', ja: 'デザート' }, items: [
+          { in: 'SKR', n: { th: 'ไอศกรีมวานิลลา', en: 'Vanilla ice cream', ja: 'バニラアイス' } },
+          { in: 'KR', hot: 1, n: { th: 'ซอร์เบต์มะม่วง', en: 'Mango sorbet', ja: 'マンゴーシャーベット' } },
+          { in: 'R', n: { th: 'ครีมบรูเลย์', en: 'Crème brûlée', ja: 'クレームブリュレ' } },
+        ] },
+        { key: 'drink', icon: 'drink', name: { th: 'เครื่องดื่ม', en: 'Drinks', ja: 'ドリンク' }, items: [
+          { in: '', n: { th: 'ดื่มไม่อั้น (ซอฟต์ดริงก์)', en: 'Soft drink bar', ja: 'ソフトドリンク飲み放題' }, s: { th: '+฿129 ต่อท่าน', en: '+฿129 per person', ja: 'お一人様 +฿129' } },
+          { in: '', n: { th: 'ดื่มไม่อั้น (เบียร์และอื่นๆ)', en: 'All-you-can-drink, beer and more', ja: 'アルコール飲み放題' }, s: { th: '+฿399 ต่อท่าน', en: '+฿399 per person', ja: 'お一人様 +฿399' } },
+        ] },
+      ]
+
+      const params = new URLSearchParams(location.search)
+      let lang = ['th', 'en', 'ja'].includes(params.get('lang')) ? params.get('lang') : 'th'
+      let course = ['S', 'K', 'R'].includes(params.get('course')) ? params.get('course') : 'K'
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
+
+      function render() {
+        const t = T[lang]
+        document.documentElement.lang = lang
+        document.title = `Yakiniku King Bangkok · ${{ th: 'เมนู', en: 'Menu', ja: 'メニュー' }[lang]}`
+        document.querySelectorAll('[data-t]').forEach((el) => (el.textContent = t[el.dataset.t]))
+        document.querySelectorAll('.langs button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.lang === lang))
+
+        document.getElementById('courses').innerHTML = COURSES.map(
+          (c) => `<button type="button" class="course" data-course="${c.key}" aria-pressed="${c.key === course}">
+            <img src="${c.img}" alt="" width="112" height="112" loading="lazy" />
+            <span>
+              <span class="top"><h3>${esc(c.name[lang])}</h3><span class="price">฿${c.price.toLocaleString()}</span></span>
+              <p>${esc(c.desc[lang])}</p>
+              <span class="tag">${esc(COUNT[lang](c.items))} · ${esc(c.key === course ? t.chosen : t.include)}</span>
+            </span>
+          </button>`
+        ).join('')
+
+        document.getElementById('chips').innerHTML = MENU.map(
+          (cat) => `<a href="#${cat.key}">${ICON[cat.icon]}${esc(cat.name[lang])}</a>`
+        ).join('')
+
+        document.getElementById('menu').innerHTML = MENU.map(
+          (cat) => `<section class="cat" id="${cat.key}">
+            <h2>${ICON[cat.icon]}${esc(cat.name[lang])}</h2>
+            <div class="items">${cat.items
+              .map((item) => {
+                const out = item.in && !item.in.includes(course)
+                const marks = item.in
+                  ? `<span class="in" aria-hidden="true">${['S', 'K', 'R'].map((k) => `<b class="${item.in.includes(k) ? 'on' : ''}">${k}</b>`).join('')}</span>`
+                  : ''
+                return `<div class="item${out ? ' out' : ''}">
+                  <span class="name">${esc(item.n[lang])}${item.hot ? `<span class="pop">${esc(t.hot)}</span>` : ''}${item.s ? `<span class="sub">${esc(item.s[lang])}</span>` : ''}</span>${marks}
+                </div>`
+              })
+              .join('')}</div>
+          </section>`
+        ).join('')
+      }
+
+      document.addEventListener('click', (event) => {
+        const langButton = event.target.closest('.langs button')
+        const courseButton = event.target.closest('.course')
+        if (langButton) lang = langButton.dataset.lang
+        else if (courseButton) course = courseButton.dataset.course
+        else return
+        const url = new URL(location.href)
+        url.searchParams.set('lang', lang)
+        url.searchParams.set('course', course)
+        history.replaceState(null, '', url)
+        render()
+      })
+      render()
+    </script>
+  </body>
+</html>
