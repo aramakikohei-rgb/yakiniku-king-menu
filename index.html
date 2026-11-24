@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Yakiniku King Bangkok · Menu</title>
-    <meta name="description" content="Yakiniku King Bangkok: all-you-can-eat Japanese yakiniku. Courses and menu." />
+    <title>Yakiniku King Thailand · Menu</title>
+    <meta name="description" content="Yakiniku King Thailand: 100-minute all-you-can-eat yakiniku. Courses and menu." />
     <meta name="theme-color" content="#a71a1c" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kanit:wght@500;700&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+Thai:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kanit:wght@500;700&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+SC:wght@500;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <!--
-      Yakiniku King Bangkok's menu, a DEMO for the MonBooking pitch: the LINE rich menu's "View menu" opens it,
-      with ?lang=th|en|ja for the language the customer chose. One static folder, no build, no tracking.
-      FROM THEIR OWN MATERIAL: the logo, the red, the three courses and their item counts, 120 minutes, tablet
-      ordering. PLACEHOLDERS: every price, every item and which course has it. Replace with theirs.
-      Photos: Unsplash (free to use, https://unsplash.com/license): hrkEJHZpUMs, xIVargormXU, DB4yVdAIXtM.
+      Yakiniku King Thailand's menu, a DEMO for the MonBooking pitch: the LINE rich menu's "View menu" opens it with
+      ?lang=th|en|ja|zh. One static folder, no build, no tracking.
+      FROM THEIR OWN MATERIAL (yakiniku-king.jp, used with the client's agreement, minutes 2026-11-24): the logo, the
+      three courses, the 100-minute meal, last order 20 minutes before, the dishes and which course has them, and the
+      photos in img/. PLACEHOLDERS: every Thai price, the drinks prices and the translations. Replace with theirs.
     -->
     <style>
       :root {
@@ -28,9 +28,9 @@
         --paper: #f6efe6;
         --card: #ffffff;
         --line: #eadccd;
-        --gold: #d9a441;
+        --gold: #c8932e;
         --display: 'Dela Gothic One', 'Kanit', 'Noto Sans JP', sans-serif;
-        --body: 'Noto Sans Thai', 'Noto Sans JP', system-ui, sans-serif;
+        --body: 'Noto Sans Thai', 'Noto Sans JP', 'Noto Sans SC', system-ui, sans-serif;
       }
       * {
         box-sizing: border-box;
@@ -49,6 +49,16 @@
       html[lang='th'] {
         --display: 'Kanit', 'Dela Gothic One', sans-serif;
       }
+      html[lang='zh'] {
+        --display: 'Noto Sans SC', sans-serif;
+        --body: 'Noto Sans SC', 'Noto Sans JP', system-ui, sans-serif;
+      }
+      html[lang='zh'] h1,
+      html[lang='zh'] h2,
+      html[lang='th'] h1,
+      html[lang='th'] h2 {
+        font-weight: 700;
+      }
       img {
         display: block;
         max-width: 100%;
@@ -63,7 +73,7 @@
         position: sticky;
         top: 0;
         z-index: 10;
-        background: rgba(255, 255, 255, 0.94);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         border-bottom: 4px solid var(--red);
       }
@@ -71,26 +81,26 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        gap: 10px;
         padding: 10px 16px;
       }
       .bar img {
-        height: 40px;
+        height: 38px;
         width: auto;
       }
       .langs {
         display: flex;
-        padding: 4px;
+        padding: 3px;
         border-radius: 999px;
         background: #f1e6d9;
       }
       .langs button {
         border: 0;
-        padding: 6px 12px;
+        padding: 6px 10px;
         border-radius: 999px;
         background: none;
-        font: 800 13px/1 'Kanit', sans-serif;
-        letter-spacing: 0.06em;
+        font: 800 12px/1 'Kanit', 'Noto Sans SC', sans-serif;
+        letter-spacing: 0.04em;
         color: var(--muted);
         cursor: pointer;
       }
@@ -102,23 +112,18 @@
       /* hero */
       .hero {
         position: relative;
-        min-height: 300px;
-        display: flex;
-        align-items: flex-end;
         color: #fff;
-        background: var(--ink) url('hero.jpg') center 40% / cover;
-        overflow: hidden;
+        background: var(--ink) url('img/course-king.jpg') center / cover;
       }
       .hero::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(36, 28, 26, 0.05) 20%, rgba(36, 28, 26, 0.92));
+        background: linear-gradient(180deg, rgba(36, 28, 26, 0.15), rgba(36, 28, 26, 0.92) 85%);
       }
       .hero .wrap {
         position: relative;
-        width: 100%;
-        padding: 80px 20px 26px;
+        padding: 96px 20px 24px;
       }
       .kicker {
         display: inline-block;
@@ -131,11 +136,8 @@
       }
       .hero h1 {
         margin: 10px 0 6px;
-        font: 400 clamp(32px, 9vw, 50px) / 1.08 var(--display);
+        font: 400 clamp(30px, 8.5vw, 48px) / 1.1 var(--display);
         animation: rise 0.6s 0.08s both;
-      }
-      html[lang='th'] .hero h1 {
-        font-weight: 700;
       }
       .hero p {
         margin: 0;
@@ -154,86 +156,82 @@
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin-top: 16px;
+        margin: 16px 0 0;
         padding: 0;
         list-style: none;
         animation: rise 0.6s 0.24s both;
       }
       .facts li {
         padding: 6px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.32);
         border-radius: 999px;
         font-size: 13px;
         font-weight: 600;
       }
 
       section {
-        padding: 28px 16px 8px;
+        padding: 28px 16px 6px;
       }
       h2 {
         display: flex;
         align-items: center;
         gap: 10px;
         margin: 0 0 14px;
-        font: 400 24px/1.2 var(--display);
-      }
-      html[lang='th'] h2 {
-        font-weight: 700;
+        font: 400 23px/1.2 var(--display);
       }
       h2::before {
         content: '';
+        flex: none;
         width: 8px;
         height: 24px;
         border-radius: 4px;
         background: var(--red);
       }
+      .lede {
+        margin: -6px 0 14px;
+        color: var(--muted);
+        font-size: 13.5px;
+      }
 
-      /* courses: choosing one shows what it includes below */
+      /* courses */
       .courses {
         display: grid;
-        gap: 12px;
+        gap: 14px;
       }
       .course {
-        display: grid;
-        grid-template-columns: 112px 1fr;
-        gap: 14px;
-        align-items: center;
         width: 100%;
-        padding: 10px;
+        padding: 0;
         border: 2px solid transparent;
         border-radius: 20px;
+        overflow: hidden;
         background: var(--card);
         box-shadow: 0 10px 30px rgba(120, 40, 20, 0.08);
         text-align: left;
         font: inherit;
         color: inherit;
         cursor: pointer;
-        transition:
-          border-color 0.2s,
-          transform 0.2s;
-      }
-      .course:active {
-        transform: scale(0.99);
+        transition: border-color 0.2s;
       }
       .course[aria-pressed='true'] {
         border-color: var(--red);
       }
       .course img {
-        width: 112px;
-        height: 112px;
-        border-radius: 14px;
+        width: 100%;
+        aspect-ratio: 11 / 4;
         object-fit: cover;
+      }
+      .course .info {
+        padding: 12px 16px 16px;
       }
       .course .top {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
-        gap: 8px;
+        gap: 10px;
       }
       .course h3 {
         margin: 0;
-        font-size: 17px;
-        line-height: 1.3;
+        font-size: 18px;
       }
       .price {
         flex: none;
@@ -247,8 +245,8 @@
       }
       .tag {
         display: inline-block;
-        margin-top: 8px;
-        padding: 2px 10px;
+        margin-top: 10px;
+        padding: 3px 11px;
         border-radius: 999px;
         background: #fbeee6;
         color: var(--red);
@@ -265,10 +263,56 @@
         font-size: 13px;
       }
 
+      /* the five signatures */
+      .rail {
+        display: flex;
+        gap: 12px;
+        margin: 0 -16px;
+        padding: 4px 16px 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+      .rail::-webkit-scrollbar {
+        display: none;
+      }
+      .sig {
+        flex: none;
+        width: 200px;
+        scroll-snap-align: start;
+        border-radius: 18px;
+        background: var(--card);
+        overflow: hidden;
+        box-shadow: 0 8px 22px rgba(120, 40, 20, 0.08);
+        transition: opacity 0.25s;
+      }
+      .sig .pic {
+        background: radial-gradient(circle at 50% 60%, #fff 0 55%, #fbeee6 56%);
+        padding: 10px;
+      }
+      .sig img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
+      }
+      .sig .name {
+        padding: 10px 12px 14px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.35;
+      }
+      .sig .name small {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+      }
+
       /* category chips */
       .chips {
         position: sticky;
-        top: 64px;
+        top: 62px;
         z-index: 5;
         display: flex;
         gap: 8px;
@@ -282,10 +326,7 @@
       }
       .chips a {
         flex: none;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 7px 14px 7px 8px;
+        padding: 7px 14px;
         border-radius: 999px;
         background: var(--card);
         border: 1px solid var(--line);
@@ -294,42 +335,57 @@
         font-weight: 600;
         text-decoration: none;
       }
-      .chips svg {
-        width: 24px;
-        height: 24px;
-      }
 
-      /* items */
+      /* a category: its photo, then its dishes */
       .cat {
         padding-top: 22px;
         scroll-margin-top: 120px;
       }
-      .cat h2 svg {
-        width: 34px;
-        height: 34px;
+      .cat .card {
+        border-radius: 18px;
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 8px 22px rgba(120, 40, 20, 0.06);
       }
-      .cat h2::before {
-        display: none;
+      .cat .photo {
+        position: relative;
+      }
+      .cat .photo img {
+        width: 100%;
+        aspect-ratio: 5 / 3;
+        object-fit: cover;
+      }
+      .cat .photo h3 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 30px 16px 12px;
+        background: linear-gradient(180deg, transparent, rgba(36, 28, 26, 0.85));
+        color: #fff;
+        font: 400 21px/1.2 var(--display);
+      }
+      .cat .plain {
+        margin: 0;
+        padding: 14px 16px 4px;
+        font: 400 21px/1.2 var(--display);
       }
       .items {
         display: grid;
-        gap: 1px;
-        border-radius: 18px;
-        overflow: hidden;
-        background: var(--line);
       }
       .item {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 14px 16px;
-        background: var(--card);
+        padding: 12px 16px;
+        border-top: 1px solid var(--line);
         transition: opacity 0.25s;
       }
       .item .name {
         flex: 1;
         font-weight: 600;
-        font-size: 15.5px;
+        font-size: 15px;
       }
       .item .sub {
         display: block;
@@ -337,14 +393,15 @@
         font-weight: 400;
         font-size: 12.5px;
       }
-      .item .in {
+      .in {
         flex: none;
         display: flex;
         gap: 4px;
       }
-      .item .in b {
-        width: 22px;
+      .in b {
+        min-width: 24px;
         height: 22px;
+        padding: 0 4px;
         display: grid;
         place-items: center;
         border-radius: 6px;
@@ -352,12 +409,19 @@
         color: #b9a796;
         font: 700 11px/1 'Kanit', sans-serif;
       }
-      .item .in b.on {
+      .in b.on {
         background: var(--ink);
         color: #fff;
       }
-      .pop {
-        margin-left: 8px;
+      .out {
+        opacity: 0.32;
+      }
+      .out .name {
+        text-decoration: line-through;
+        text-decoration-color: rgba(36, 28, 26, 0.4);
+      }
+      .badge {
+        margin-left: 6px;
         padding: 1px 8px;
         border-radius: 999px;
         background: var(--gold);
@@ -366,15 +430,7 @@
         font-weight: 700;
         vertical-align: 2px;
       }
-      .item.out {
-        opacity: 0.35;
-      }
-      .item.out .name {
-        text-decoration: line-through;
-        text-decoration-color: rgba(36, 28, 26, 0.4);
-      }
 
-      /* booking call */
       .book {
         position: sticky;
         bottom: 0;
@@ -409,11 +465,12 @@
   <body>
     <header class="bar">
       <div class="wrap">
-        <img src="logo.png" alt="Yakiniku King" width="113" height="40" />
+        <img src="logo.png" alt="Yakiniku King" width="108" height="38" />
         <div class="langs" role="group" aria-label="Language">
           <button type="button" data-lang="th">TH</button>
           <button type="button" data-lang="en">EN</button>
           <button type="button" data-lang="ja">JP</button>
+          <button type="button" data-lang="zh">中文</button>
         </div>
       </div>
     </header>
@@ -437,13 +494,26 @@
         <div class="courses" id="courses"></div>
         <p class="note" data-t="kids"></p>
       </section>
+
+      <section>
+        <h2 data-t="signatures"></h2>
+        <p class="lede" data-t="signaturesLede"></p>
+        <div class="rail" id="signatures"></div>
+      </section>
+
+      <section>
+        <h2 data-t="premium"></h2>
+        <p class="lede" data-t="premiumLede"></p>
+        <div class="rail" id="premium"></div>
+      </section>
+
       <nav class="chips" id="chips" aria-label="Categories"></nav>
       <div id="menu"></div>
       <footer data-t="footer"></footer>
     </main>
 
     <div class="book">
-      <a id="book" href="https://line.me/R/ti/p/@491fwluf"
+      <a href="https://line.me/R/ti/p/@491fwluf"
         ><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
           <rect x="3" y="5" width="18" height="16" rx="3" />
           <path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4" /></svg
@@ -452,162 +522,227 @@
     </div>
 
     <script>
-      // Words of the page in each language.
+      // The page's words in each language.
       const T = {
         th: {
-          kicker: 'สาขากรุงเทพฯ',
-          title: 'เมนูปิ้งย่างบุฟเฟต์',
-          lead: 'ปิ้งย่างสไตล์ญี่ปุ่นไม่อั้น เลือกคอร์ส แล้วสั่งผ่านแท็บเล็ตที่โต๊ะได้ตลอด 120 นาที',
-          fact1: '120 นาที', fact2: 'สั่งผ่านแท็บเล็ต', fact3: 'เปิด 11:00–22:00',
-          courses: 'เลือกคอร์ส', include: 'แตะเพื่อดูเมนูในคอร์ส', chosen: 'เมนูของคอร์สนี้แสดงด้านล่าง',
-          kids: 'เด็ก 6–12 ปี ลดครึ่งราคา ต่ำกว่า 6 ปี ฟรี ราคายังไม่รวมค่าบริการและภาษีมูลค่าเพิ่ม',
-          hot: 'แนะนำ', book: 'จองโต๊ะทาง LINE',
-          footer: 'เมนูตัวอย่างสำหรับการสาธิต ราคาและรายการอาหารอาจแตกต่างจากจริง',
+          kicker: 'ประเทศไทย',
+          title: 'ปิ้งย่างบุฟเฟต์ 100 นาที',
+          lead: 'เลือกคอร์สที่โต๊ะ แล้วสั่งได้ไม่อั้นผ่านแท็บเล็ตตลอด 100 นาที',
+          fact1: '100 นาที', fact2: 'สั่งรอบสุดท้าย 20 นาทีก่อนหมดเวลา', fact3: 'สั่งผ่านแท็บเล็ต',
+          courses: 'คอร์สบุฟเฟต์', include: 'แตะเพื่อดูเมนูในคอร์ส', chosen: 'แสดงเมนูของคอร์สนี้ด้านล่าง',
+          kids: 'เด็กก่อนวัยเรียน ฟรี · เด็กประถม ครึ่งราคา · ราคายังไม่รวมค่าบริการและภาษีมูลค่าเพิ่ม',
+          signatures: '5 เมนูซิกเนเจอร์', signaturesLede: 'มีในคอร์สคิงและคอร์สพรีเมียม',
+          premium: 'เฉพาะคอร์สพรีเมียม', premiumLede: 'เนื้อวัวดำคุโรเกะวากิวและเมนูคัดพิเศษ',
+          sigTag: 'ซิกเนเจอร์', popular: 'ยอดนิยม',
+          book: 'จองโต๊ะทาง LINE',
+          footer: 'เมนูสาธิต: รายการอาหารและภาพจากยากินิกุคิงประเทศญี่ปุ่น ราคาเป็นตัวอย่างเท่านั้น',
         },
         en: {
-          kicker: 'Bangkok branch',
-          title: 'All-you-can-eat yakiniku',
-          lead: 'Japanese barbecue, as much as you like. Pick a course, then order from the tablet at your table for 120 minutes.',
-          fact1: '120 minutes', fact2: 'Order by tablet', fact3: 'Open 11:00–22:00',
-          courses: 'Choose a course', include: 'Tap to see what it includes', chosen: 'Its dishes are shown below',
-          kids: 'Children 6–12 half price, under 6 free. Prices exclude service charge and VAT.',
-          hot: 'Popular', book: 'Book a table on LINE',
-          footer: 'Sample menu for a demo. Prices and dishes may differ from the restaurant’s.',
+          kicker: 'Thailand',
+          title: '100-minute all-you-can-eat yakiniku',
+          lead: 'Pick a course at your table, then order as much as you like from the tablet for 100 minutes.',
+          fact1: '100 minutes', fact2: 'Last order 20 minutes before the end', fact3: 'Order by tablet',
+          courses: 'All-you-can-eat courses', include: 'Tap to see what it includes', chosen: 'Its dishes are shown below',
+          kids: 'Preschoolers free · primary-school children half price · prices exclude service charge and VAT',
+          signatures: 'The five signatures', signaturesLede: 'In the King and Premium courses',
+          premium: 'Premium course only', premiumLede: 'Kuroge wagyu and special selections',
+          sigTag: 'Signature', popular: 'Popular',
+          book: 'Book a table on LINE',
+          footer: 'Demo menu: dishes and photos from Yakiniku King Japan; prices are placeholders.',
         },
         ja: {
-          kicker: 'バンコク店',
-          title: '焼肉食べ放題メニュー',
-          lead: 'コースを選んで、席のタブレットから120分間好きなだけ。',
-          fact1: '120分', fact2: 'タブレット注文', fact3: '営業 11:00–22:00',
-          courses: 'コースを選ぶ', include: 'タップで内容を表示', chosen: '下にこのコースのメニューを表示中',
-          kids: '6〜12歳は半額、6歳未満は無料。サービス料・VAT別。',
-          hot: '人気', book: 'LINEで席を予約',
-          footer: 'デモ用のサンプルメニューです。価格・内容は実際と異なる場合があります。',
+          kicker: 'タイ',
+          title: '100分食べ放題の焼肉',
+          lead: 'コースを選んで、席のタブレットから100分間好きなだけご注文いただけます。',
+          fact1: '100分食べ放題', fact2: 'ラストオーダーは終了20分前', fact3: 'タブレット注文',
+          courses: '食べ放題コース', include: 'タップで内容を表示', chosen: '下にこのコースのメニューを表示中',
+          kids: '未就学児無料・小学生半額・サービス料・VAT別',
+          signatures: '五大名物', signaturesLede: 'きんぐコース・プレミアムコースで',
+          premium: 'プレミアムコース限定', premiumLede: '黒毛和牛・黒毛牛・特選メニュー',
+          sigTag: '名物', popular: '人気',
+          book: 'LINEで席を予約',
+          footer: 'デモ用メニューです。料理・写真は日本の焼肉きんぐより、価格は仮のものです。',
+        },
+        zh: {
+          kicker: '泰国',
+          title: '100分钟烤肉自助',
+          lead: '在餐桌选择套餐,100分钟内通过平板电脑尽情点餐。',
+          fact1: '100分钟', fact2: '结束前20分钟最后点餐', fact3: '平板点餐',
+          courses: '自助套餐', include: '点击查看套餐内容', chosen: '下方显示该套餐的菜品',
+          kids: '学龄前儿童免费 · 小学生半价 · 价格不含服务费和增值税',
+          signatures: '五大招牌', signaturesLede: 'King套餐和尊享套餐提供',
+          premium: '尊享套餐限定', premiumLede: '黑毛和牛及特选菜品',
+          sigTag: '招牌', popular: '人气',
+          book: '通过LINE预订餐桌',
+          footer: '演示菜单:菜品和图片来自日本烧肉King,价格仅为示例。',
         },
       }
 
-      // The three courses, as on the booking platform. Each later course has everything in the one before.
+      // The three courses, as in Japan: each later one has everything in the one before. Thai prices are placeholders.
       const COURSES = [
-        { key: 'S', img: 'select.jpg', price: 599, items: 59,
-          name: { th: 'คอร์สซีเลคท์', en: 'Select Course', ja: 'セレクトコース' },
-          desc: { th: 'หมู ไก่ เนื้อซี่โครง เครื่องเคียง และของหวาน', en: 'Pork, chicken, beef short rib, sides and dessert.', ja: '豚・鶏・牛カルビ、サイド、デザート。' } },
-        { key: 'K', img: 'king.jpg', price: 799, items: 100,
-          name: { th: 'คอร์สคิง', en: 'King Course', ja: 'きんぐコース' },
-          desc: { th: 'คอร์สซิกเนเจอร์ เนื้อคิง ลิ้นวัวหั่นหนา ข้าวและเส้น', en: 'Our signature: King cuts, thick-sliced tongue, rice and noodles.', ja: '看板コース。きんぐ名物の肉、厚切りタン、ご飯・麺。' } },
-        { key: 'R', img: 'royal.jpg', price: 1099, items: 110,
-          name: { th: 'คอร์สรอยัล', en: 'Royal Course', ja: 'ロイヤルコース' },
-          desc: { th: 'ทุกอย่างในคอร์สคิง เพิ่มเนื้อลายหินอ่อนพรีเมียม', en: 'Everything in King plus premium marbled cuts.', ja: 'きんぐコースの全品に、霜降りの上質部位をプラス。' } },
+        { key: '58', img: 'img/course-58.jpg', price: 599,
+          name: { th: 'คอร์ส 58 รายการ', en: '58-Item Course', ja: '58品コース', zh: '58品套餐' },
+          desc: { th: 'เนื้อ ซีฟู้ด ผัก และของหวาน คอร์สเริ่มต้น', en: 'Meat, seafood, vegetables and desserts: the place to start.', ja: '肉・海鮮・野菜・デザートまで楽しめるスタンダードコース。', zh: '肉类、海鲜、蔬菜和甜点,入门首选。' } },
+        { key: 'K', img: 'img/course-king.jpg', price: 799,
+          name: { th: 'คอร์สคิง', en: 'King Course', ja: 'きんぐコース', zh: 'King套餐' },
+          desc: { th: 'คอร์สยอดนิยม พร้อม 5 เมนูซิกเนเจอร์และเมนูตามฤดูกาล', en: 'Our most popular: the five signatures and the seasonal menu.', ja: '一番人気。五大名物・期間限定メニューも。', zh: '最受欢迎:五大招牌和季节限定。' } },
+        { key: 'P', img: 'img/course-premium.jpg', price: 1099,
+          name: { th: 'คอร์สพรีเมียม', en: 'Premium Course', ja: 'プレミアムコース', zh: '尊享套餐' },
+          desc: { th: 'ทุกอย่างในคอร์สคิง เพิ่มวากิวคุโรเกะและเมนูคัดพิเศษ', en: 'Everything in King, plus kuroge wagyu and special selections.', ja: 'きんぐコースの全品に、黒毛和牛・特選メニューをプラス。', zh: 'King套餐全部菜品,加黑毛和牛与特选菜品。' } },
       ]
-      const COUNT = { th: (n) => `${n} รายการ`, en: (n) => `${n} items`, ja: (n) => `${n}品` }
 
-      // Small drawings for each category, in the restaurant's colours.
-      const ICON = {
-        beef: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M8 22c2-8 12-12 20-9 6 2 6 9 0 12-7 4-18 4-20-3z" fill="#c9443a"/><path d="M12 20c5-4 11-5 15-3" stroke="#f3c9b8" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>',
-        tongue: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><ellipse cx="20" cy="21" rx="12" ry="8" fill="#e88a86"/><path d="M12 21h16M14 17h12M14 25h12" stroke="#c9605c" stroke-width="1.6"/></svg>',
-        pork: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><rect x="8" y="12" width="24" height="16" rx="4" fill="#f0b3a6"/><path d="M8 17h24M8 23h24" stroke="#fff" stroke-width="2.4"/></svg>',
-        chicken: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M14 26c-4-4-2-14 8-14 6 0 8 6 5 10-2 3-6 3-8 5z" fill="#e2a15a"/><path d="M14 26l-4 4" stroke="#f6e7c8" stroke-width="3.4" stroke-linecap="round"/></svg>',
-        sea: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M28 14c-8-4-18 2-17 10 1 5 7 6 11 3l-3-5c4 1 8-2 9-8z" fill="#ef8a5a"/><circle cx="25" cy="15" r="1.6" fill="#241c1a"/></svg>',
-        rice: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M9 20h22c0 7-5 11-11 11S9 27 9 20z" fill="#a71a1c"/><path d="M10 20c1-6 19-6 20 0z" fill="#fff"/></svg>',
-        side: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><ellipse cx="20" cy="24" rx="12" ry="5" fill="#fff" stroke="#eadccd"/><path d="M12 22c2-6 6-9 9-6 3-5 8-2 7 5z" fill="#d94b2b"/><path d="M15 20c3-2 6-2 9 0" stroke="#6fae54" stroke-width="2.2" fill="none"/></svg>',
-        dessert: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><path d="M14 20l6 13 6-13z" fill="#d9a441"/><circle cx="20" cy="17" r="7" fill="#fff" stroke="#eadccd"/><circle cx="20" cy="10" r="2.4" fill="#a71a1c"/></svg>',
-        drink: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#fbeee6"/><rect x="12" y="13" width="13" height="17" rx="2" fill="#f2b33a"/><path d="M25 16h3a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-3" stroke="#f2b33a" stroke-width="2.4" fill="none"/><path d="M11 14c0-4 15-4 15 0z" fill="#fff"/></svg>',
-      }
+      // The five signatures (King and Premium only).
+      const SIGNATURES = [
+        { img: 'img/godai-karubi.png', n: { th: 'คาลบิคิง', en: 'King Kalbi', ja: 'きんぐカルビ', zh: 'King招牌牛五花' } },
+        { img: 'img/godai-shimacho.png', n: { th: 'ไส้ใหญ่วัวทั้งเส้นหมักไห ซอสยังนยม', en: 'Whole pot-marinated beef intestine, Korean yangnyeom', ja: '韓式ヤンニョムだれ 壺漬け一本シマチョウ', zh: '韩式调味酱坛腌整条牛大肠' } },
+        { img: 'img/godai-misuji.png', n: { th: 'มิสึจิย่างไฟ ซอสต้นหอมเกลือพอนสึ', en: 'Seared misuji, leek-salt ponzu', ja: '炙りミスジ ～ねぎ塩ポン酢～', zh: '炙烤牛肩胛 葱盐柚子醋' } },
+        { img: 'img/godai-sudare.png', n: { th: 'คาลบิพรีเมียมแผ่นใหญ่', en: 'Large sudare-cut premium kalbi', ja: '大判すだれ上カルビ', zh: '大片帘切上等牛五花' } },
+        { img: 'img/godai-harami.png', n: { th: 'ฮารามิหนาพิเศษ ซอสโชยุกระเทียมเนย', en: 'Extra-thick harami, garlic-butter soy', ja: '超極厚ハラミ ～ガリバタ醤油～', zh: '超厚切牛横膈膜 蒜香黄油酱油' } },
+      ]
 
-      // The dishes, and which course includes each (S, K, R). All placeholders for the demo.
+      // Premium only.
+      const PREMIUM = [
+        { img: 'img/p-wagyu-karubi.jpg', n: { th: 'คาลบิพรีเมียม วากิวคุโรเกะ', en: 'Kuroge wagyu premium kalbi', ja: '黒毛和牛上カルビ', zh: '黑毛和牛上等五花' } },
+        { img: 'img/p-yakishabu.jpg', n: { th: 'ยากิชาบูคาลบิ เนื้อคุโรเกะ', en: 'Kuroge beef yaki-shabu kalbi', ja: '黒毛牛焼しゃぶカルビ', zh: '黑毛牛烤涮五花' } },
+        { img: 'img/p-dodeka.jpg', n: { th: 'สันนอกพรีเมียมชิ้นใหญ่ เนื้อคุโรเกะ', en: 'Kuroge beef extra-large loin', ja: '黒毛牛ドでか！上ロース', zh: '黑毛牛超大片上等里脊' } },
+        { img: 'img/p-gyutan.jpg', n: { th: 'ลิ้นวัวหั่นหนา (คัดพิเศษ)', en: 'Thick-cut beef tongue (special)', ja: '【特選】厚切り牛タン', zh: '【特选】厚切牛舌' } },
+        { img: 'img/p-mino.jpg', n: { th: 'สเต็กมิโนะ (คัดพิเศษ)', en: 'Mino steak (special)', ja: '【特選】ミノステーキ', zh: '【特选】牛肚排' } },
+      ]
+
+      // The dishes by category, and which course has each (58, K, P).
+      const ALL = '58KP', KP = 'KP'
       const MENU = [
-        { key: 'beef', icon: 'beef', name: { th: 'เนื้อวัว', en: 'Beef', ja: '牛肉' }, items: [
-          { in: 'SKR', hot: 1, n: { th: 'คาลบิคิง', en: 'King kalbi', ja: 'きんぐカルビ' }, s: { th: 'ซอสสูตรพิเศษ', en: 'Our house sauce', ja: '秘伝のタレ' } },
-          { in: 'SKR', n: { th: 'เนื้อซี่โครงหมักซอส', en: 'Marinated short rib', ja: '牛カルビ(タレ)' } },
-          { in: 'KR', n: { th: 'ฮารามิ', en: 'Harami skirt steak', ja: 'ハラミ' } },
-          { in: 'KR', n: { th: 'เนื้อสันนอกหั่นหนา', en: 'Thick-cut sirloin', ja: '厚切りサーロイン' } },
-          { in: 'R', hot: 1, n: { th: 'คาลบิลายหินอ่อนพรีเมียม', en: 'Premium marbled kalbi', ja: '特選霜降りカルビ' } },
-          { in: 'R', n: { th: 'เนื้อสะโพกสไลซ์ย่างไฟ', en: 'Seared beef rump slices', ja: '炙りランプ' } },
+        { key: 'kalbi', img: 'img/c-karubi.jpg', name: { th: 'คาลบิ', en: 'Kalbi', ja: 'カルビ', zh: '牛五花' }, items: [
+          { in: ALL, hot: 1, n: { th: 'คาลบิสามชั้นย่างไฟ (ซอส/เกลือ)', en: 'Seared short-plate kalbi (sauce/salt)', ja: '炙りバラカルビ(タレ・塩)', zh: '炙烤牛五花(酱汁/盐)' } },
+          { in: ALL, n: { th: 'คาลบิ (ซอส/เกลือ)', en: 'Kalbi (sauce/salt)', ja: 'カルビ(タレ・塩)', zh: '牛五花(酱汁/盐)' } },
+          { in: ALL, n: { th: 'คาลบิลูกเต๋า (ซอส/เกลือ)', en: 'Diced kalbi (sauce/salt)', ja: 'サイコロカルビ(タレ・塩)', zh: '骰子牛五花(酱汁/盐)' } },
+          { in: KP, n: { th: 'คาลบิสามชั้นย่างไฟ ต้นหอมเกลือ', en: 'Seared kalbi, leek and salt', ja: '炙りバラカルビ(ネギ塩)', zh: '炙烤牛五花(葱盐)' } },
         ] },
-        { key: 'tongue', icon: 'tongue', name: { th: 'ลิ้นวัว', en: 'Tongue', ja: 'タン' }, items: [
-          { in: 'SKR', n: { th: 'ลิ้นวัวเกลือต้นหอม', en: 'Salted tongue with leek', ja: 'ねぎ塩タン' } },
-          { in: 'KR', hot: 1, n: { th: 'ลิ้นวัวหั่นหนา', en: 'Thick-sliced tongue', ja: '厚切りタン' } },
-          { in: 'R', n: { th: 'ลิ้นวัวพรีเมียม', en: 'Premium tongue', ja: '上タン塩' } },
+        { key: 'tongue', img: 'img/c-tan.jpg', name: { th: 'ลิ้น', en: 'Tongue', ja: 'タン', zh: '舌' }, items: [
+          { in: ALL, n: { th: 'ลิ้นเกลือคิง (หมู)', en: 'King salted tongue (pork)', ja: 'きんぐ塩タン【ポーク】', zh: 'King盐味舌(猪)' } },
+          { in: KP, n: { th: 'ลิ้นคิงต้นหอมเกลือ (หมู)', en: 'King tongue, leek and salt (pork)', ja: 'ネギ塩きんぐタン【ポーク】', zh: '葱盐King舌(猪)' } },
         ] },
-        { key: 'pork', icon: 'pork', name: { th: 'หมู', en: 'Pork', ja: '豚肉' }, items: [
-          { in: 'SKR', n: { th: 'หมูสามชั้น', en: 'Pork belly', ja: '豚バラ' } },
-          { in: 'SKR', n: { th: 'หมูหมักมิโซะเผ็ด', en: 'Spicy miso pork', ja: 'ピリ辛味噌豚' } },
-          { in: 'KR', n: { th: 'คอหมูย่าง', en: 'Pork jowl', ja: '豚トロ' } },
+        { key: 'harami', img: 'img/c-harami.jpg', name: { th: 'ฮารามิ', en: 'Harami', ja: 'ハラミ', zh: '横膈膜' }, items: [
+          { in: KP, n: { th: 'ฮารามิ (ซอส/เกลือ)', en: 'Harami (sauce/salt)', ja: 'ハラミ(タレ・塩)', zh: '牛横膈膜(酱汁/盐)' } },
+          { in: ALL, hot: 1, n: { th: 'ฮารามิติดใจ (หมู)', en: 'Addictive harami (pork)', ja: 'やみつきハラミ【ポーク】', zh: '上瘾横膈膜(猪)' } },
+          { in: ALL, n: { th: 'ฮารามิไก่ในตำนาน (ซอส/เกลือ/มิโสะ)', en: 'Legendary chicken harami (sauce/salt/miso)', ja: '幻の鶏ハラミ(タレ・塩・味噌)', zh: '梦幻鸡横膈膜(酱汁/盐/味噌)' } },
         ] },
-        { key: 'chicken', icon: 'chicken', name: { th: 'ไก่', en: 'Chicken', ja: '鶏肉' }, items: [
-          { in: 'SKR', n: { th: 'สะโพกไก่ซอส', en: 'Chicken thigh in sauce', ja: '鶏もも(タレ)' } },
-          { in: 'SKR', n: { th: 'ไก่เกลือกระเทียม', en: 'Garlic-salt chicken', ja: '鶏にんにく塩' } },
+        { key: 'loin', img: 'img/c-rosu.jpg', name: { th: 'สันนอก', en: 'Loin', ja: 'ロース', zh: '里脊' }, items: [
+          { in: ALL, n: { th: 'สันนอกย่างไฟ (ซอส/เกลือ)', en: 'Seared loin (sauce/salt)', ja: '炙りロース(タレ・塩)', zh: '炙烤里脊(酱汁/盐)' } },
+          { in: KP, n: { th: 'สันนอกย่างไฟ ต้นหอมเกลือ', en: 'Seared loin, leek and salt', ja: '炙りロース(ネギ塩)', zh: '炙烤里脊(葱盐)' } },
         ] },
-        { key: 'sea', icon: 'sea', name: { th: 'ซีฟู้ด', en: 'Seafood', ja: '海鮮' }, items: [
-          { in: 'SKR', n: { th: 'ปลาหมึก', en: 'Squid', ja: 'イカ' } },
-          { in: 'KR', n: { th: 'กุ้ง', en: 'Prawns', ja: 'エビ' } },
-          { in: 'R', n: { th: 'หอยเชลล์เนย', en: 'Butter scallops', ja: 'ホタテバター' } },
+        { key: 'sukiyaki', img: 'img/c-sukiyaki.jpg', name: { th: 'สุกี้ยากี้คาลบิ', en: 'Sukiyaki kalbi', ja: 'すき焼カルビ', zh: '寿喜烧牛五花' }, items: [
+          { in: KP, hot: 1, n: { th: 'สุกี้ยากี้คาลบิย่างไฟ (ไข่/โทโรโระ/มะเขือเทศ)', en: 'Seared sukiyaki kalbi (egg, tororo or tomato)', ja: '炙りすき焼カルビ(卵・とろろ・トマト)', zh: '炙烤寿喜烧牛五花(蛋/山药泥/番茄)' } },
         ] },
-        { key: 'rice', icon: 'rice', name: { th: 'ข้าวและเส้น', en: 'Rice & noodles', ja: 'ご飯・麺' }, items: [
-          { in: 'SKR', n: { th: 'ข้าวสวย', en: 'Steamed rice', ja: 'ライス' } },
-          { in: 'KR', n: { th: 'บิบิมบับหม้อหิน', en: 'Stone-pot bibimbap', ja: '石焼ビビンバ' } },
-          { in: 'KR', n: { th: 'บะหมี่เย็น', en: 'Cold noodles', ja: '冷麺' } },
-          { in: 'KR', n: { th: 'ข้าวต้มไข่', en: 'Egg rice porridge', ja: 'たまごクッパ' } },
+        { key: 'pork', img: 'img/c-toributa.jpg', name: { th: 'หมูและไก่', en: 'Pork & chicken', ja: '豚・鶏', zh: '猪肉和鸡肉' }, items: [
+          { in: ALL, n: { th: 'หมูสามชั้นหั่นหนา (ซอส/เกลือ)', en: 'Thick-cut pork belly (sauce/salt)', ja: '厚切り豚カルビ(タレ・塩)', zh: '厚切猪五花(酱汁/盐)' } },
+          { in: KP, n: { th: 'คอหมู (ซอส/เกลือ)', en: 'Pork jowl (sauce/salt)', ja: '豚トロ(タレ・塩)', zh: '猪颈肉(酱汁/盐)' } },
+          { in: ALL, n: { th: 'ไส้กรอก', en: 'Sausage', ja: 'ソーセージ', zh: '香肠' } },
+          { in: ALL, n: { th: 'คาลบิไก่ (ซอส/เกลือ/มิโสะ)', en: 'Chicken kalbi (sauce/salt/miso)', ja: '鶏カルビ(タレ・塩・味噌)', zh: '鸡五花(酱汁/盐/味噌)' } },
         ] },
-        { key: 'side', icon: 'side', name: { th: 'เครื่องเคียง', en: 'Sides', ja: 'サイド' }, items: [
-          { in: 'SKR', n: { th: 'กิมจิ', en: 'Kimchi', ja: 'キムチ' } },
-          { in: 'SKR', n: { th: 'สลัดเกาหลี', en: 'Korean salad', ja: 'チョレギサラダ' } },
-          { in: 'SKR', n: { th: 'นามูล', en: 'Namul vegetables', ja: 'ナムル' } },
-          { in: 'SKR', n: { th: 'ซุปสาหร่าย', en: 'Seaweed soup', ja: 'わかめスープ' } },
-          { in: 'KR', n: { th: 'เอดามาเมะ', en: 'Edamame', ja: '枝豆' } },
+        { key: 'offal', img: 'img/c-horumon.jpg', name: { th: 'เครื่องใน', en: 'Offal', ja: 'ホルモン', zh: '内脏' }, items: [
+          { in: ALL, n: { th: 'เครื่องในนุ่ม (เกลือ/มิโสะ)', en: 'Tender horumon (salt/miso)', ja: 'やわらかホルモン(塩・味噌)', zh: '嫩内脏(盐/味噌)' } },
         ] },
-        { key: 'dessert', icon: 'dessert', name: { th: 'ของหวาน', en: 'Desserts', ja: 'デザート' }, items: [
-          { in: 'SKR', n: { th: 'ไอศกรีมวานิลลา', en: 'Vanilla ice cream', ja: 'バニラアイス' } },
-          { in: 'KR', hot: 1, n: { th: 'ซอร์เบต์มะม่วง', en: 'Mango sorbet', ja: 'マンゴーシャーベット' } },
-          { in: 'R', n: { th: 'ครีมบรูเลย์', en: 'Crème brûlée', ja: 'クレームブリュレ' } },
+        { key: 'seafood', img: 'img/c-kaisen.jpg', name: { th: 'ซีฟู้ด', en: 'Seafood', ja: '海鮮', zh: '海鲜' }, items: [
+          { in: ALL, n: { th: 'ปลาหมึกย่าง', en: 'Grilled squid', ja: 'イカ焼', zh: '烤鱿鱼' } },
+          { in: KP, n: { th: 'กุ้งย่าง', en: 'Grilled prawns', ja: 'エビ焼', zh: '烤虾' } },
+          { in: KP, n: { th: 'กุ้งและปลาหมึกอบเนยฟอยล์', en: 'Prawn and squid in butter foil', ja: 'エビとイカのバターホイル焼', zh: '黄油锡纸烤虾和鱿鱼' } },
         ] },
-        { key: 'drink', icon: 'drink', name: { th: 'เครื่องดื่ม', en: 'Drinks', ja: 'ドリンク' }, items: [
-          { in: '', n: { th: 'ดื่มไม่อั้น (ซอฟต์ดริงก์)', en: 'Soft drink bar', ja: 'ソフトドリンク飲み放題' }, s: { th: '+฿129 ต่อท่าน', en: '+฿129 per person', ja: 'お一人様 +฿129' } },
-          { in: '', n: { th: 'ดื่มไม่อั้น (เบียร์และอื่นๆ)', en: 'All-you-can-drink, beer and more', ja: 'アルコール飲み放題' }, s: { th: '+฿399 ต่อท่าน', en: '+฿399 per person', ja: 'お一人様 +฿399' } },
+        { key: 'foil', img: 'img/c-hoiru.jpg', name: { th: 'ผักอบฟอยล์', en: 'Foil-baked vegetables', ja: 'ホイル野菜', zh: '锡纸蔬菜' }, items: [
+          { in: ALL, n: { th: 'มันฝรั่งฮอกไกโดอบเนย', en: 'Hokkaido potato with butter', ja: '北海道じゃがバターホイル焼', zh: '北海道黄油土豆' } },
+          { in: ALL, n: { th: 'ข้าวโพดเนยโชยุ', en: 'Butter corn, scorched soy', ja: '焦がし醤油のコーンバター', zh: '焦香酱油黄油玉米' } },
+          { in: KP, n: { th: 'มันหวานเนย', en: 'Sweet potato with butter', ja: 'しあわせおさつバター', zh: '幸福黄油红薯' } },
+        ] },
+        { key: 'kimchi', img: 'img/c-kimchi.jpg', name: { th: 'กิมจิ', en: 'Kimchi', ja: 'キムチ', zh: '泡菜' }, items: [
+          { in: ALL, n: { th: 'กิมจิรวม', en: 'Kimchi platter', ja: 'キムチ盛合せ', zh: '泡菜拼盘' } },
+          { in: KP, n: { th: 'กิมจิผักโนซาวานะปีศาจ (เผ็ด)', en: 'Devilish nozawana kimchi (spicy)', ja: '悪魔の野沢菜キムチ', zh: '恶魔野泽菜泡菜(辣)' } },
+        ] },
+        { key: 'sides', img: 'img/c-ippin.jpg', name: { th: 'กับแกล้ม', en: 'Small plates', ja: '逸品', zh: '小菜' }, items: [
+          { in: ALL, n: { th: 'ไก่ทอดแท่ง', en: 'Fried chicken sticks', ja: 'スティック唐揚げ', zh: '炸鸡条' } },
+          { in: ALL, n: { th: 'ชิจิมิกุยช่ายคำเล็ก', en: 'Bite-size chive pancakes', ja: 'ひとくちニラチヂミ', zh: '一口韭菜煎饼' } },
+          { in: ALL, n: { th: 'เฟรนช์ฟรายส์', en: 'French fries', ja: 'フライドポテト', zh: '炸薯条' } },
+          { in: ALL, n: { th: 'ถั่วแระญี่ปุ่น', en: 'Edamame', ja: '枝豆', zh: '毛豆' } },
+        ] },
+        { key: 'salad', img: 'img/c-salad.jpg', name: { th: 'สลัด', en: 'Salads', ja: 'サラダ', zh: '沙拉' }, items: [
+          { in: ALL, n: { th: 'สลัดโชเรกิ สาหร่ายเกาหลี', en: 'Choregi salad with Korean seaweed', ja: 'たっぷり韓国海苔のチョレギサラダ', zh: '韩国海苔沙拉' } },
+          { in: ALL, n: { th: 'ซีซาร์สลัดเบคอนชีส', en: 'Caesar salad, bacon and cheese', ja: 'ベーコンとチーズのシーザーサラダ', zh: '培根芝士凯撒沙拉' } },
+        ] },
+        { key: 'soup', img: 'img/c-soup.jpg', name: { th: 'ซุป', en: 'Soups', ja: 'スープ', zh: '汤' }, items: [
+          { in: ALL, n: { th: 'ซุปไข่นุ่ม', en: 'Fluffy egg soup', ja: 'ふわふわ玉子スープ', zh: '蓬松蛋花汤' } },
+          { in: ALL, n: { th: 'ซุปสาหร่าย', en: 'Seaweed soup', ja: 'ワカメスープ', zh: '海带汤' } },
+          { in: ALL, n: { th: 'ซุปคาลบิเผ็ด', en: 'Spicy kalbi soup', ja: '旨辛カルビスープ', zh: '香辣牛五花汤' } },
+        ] },
+        { key: 'rice', img: 'img/c-gohan.jpg', name: { th: 'ข้าวและเส้น', en: 'Rice & noodles', ja: 'ご飯・麺', zh: '米饭和面' }, items: [
+          { in: ALL, hot: 1, n: { th: 'บิบิมบับหม้อหิน', en: 'Stone-pot bibimbap', ja: '石焼ビビンバ', zh: '石锅拌饭' } },
+          { in: ALL, n: { th: 'ข้าวกระเทียมเนยหม้อหิน', en: 'Stone-pot garlic butter rice', ja: '熱々！石焼ガリバタライス', zh: '石锅蒜香黄油饭' } },
+          { in: ALL, n: { th: 'ข้าวต้มไข่', en: 'Egg rice soup', ja: '玉子クッパ', zh: '鸡蛋汤饭' } },
+          { in: ALL, n: { th: 'บะหมี่เย็นคำเล็ก', en: 'Bite-size cold noodles', ja: 'ひとくち冷麺', zh: '一口冷面' } },
+          { in: ALL, n: { th: 'ข้าวสวย', en: 'Steamed rice', ja: 'ごはん', zh: '米饭' } },
+        ] },
+        { key: 'dessert', img: 'img/c-dessert.jpg', name: { th: 'ของหวาน', en: 'Desserts', ja: 'デザート', zh: '甜点' }, items: [
+          { in: ALL, n: { th: 'อันนินเต้าหู้', en: 'Almond tofu', ja: 'やわらか杏仁豆腐', zh: '杏仁豆腐' } },
+          { in: ALL, n: { th: 'ซอฟต์ครีมวานิลลา', en: 'Vanilla soft serve', ja: 'バニラソフト', zh: '香草软冰淇淋' } },
+          { in: KP, n: { th: 'เชอร์เบตพรีเมียม', en: 'Premium sherbet', ja: 'プレミアムシャーベット', zh: '尊享雪葩' } },
+          { in: KP, n: { th: 'โรลเค้กพรีเมียม', en: 'Premium roll cake', ja: 'プレミアムロールケーキ', zh: '尊享蛋糕卷' } },
+        ] },
+        { key: 'drinks', name: { th: 'เครื่องดื่ม', en: 'Drinks', ja: 'ドリンク', zh: '饮品' }, items: [
+          { in: '', n: { th: 'ซอฟต์ดริงก์ไม่อั้น', en: 'Soft-drink bar', ja: 'ソフトドリンク飲み放題', zh: '软饮畅饮' }, s: { th: '+฿129 ต่อท่าน', en: '+฿129 per person', ja: 'お一人様 +฿129', zh: '每位 +฿129' } },
+          { in: '', n: { th: 'ดื่มไม่อั้น รวมแอลกอฮอล์', en: 'All-you-can-drink, with alcohol', ja: 'アルコール飲み放題', zh: '含酒精畅饮' }, s: { th: '+฿399 ต่อท่าน', en: '+฿399 per person', ja: 'お一人様 +฿399', zh: '每位 +฿399' } },
         ] },
       ]
 
+      const LANGS = ['th', 'en', 'ja', 'zh']
+      const COURSE_KEYS = ['58', 'K', 'P']
+      const MARK = { '58': '58', K: 'K', P: 'P' }
       const params = new URLSearchParams(location.search)
-      let lang = ['th', 'en', 'ja'].includes(params.get('lang')) ? params.get('lang') : 'th'
-      let course = ['S', 'K', 'R'].includes(params.get('course')) ? params.get('course') : 'K'
+      let lang = LANGS.includes(params.get('lang')) ? params.get('lang') : 'th'
+      let course = COURSE_KEYS.includes(params.get('course')) ? params.get('course') : 'K'
       const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
+      const has = (marks, key) => (key === '58' ? marks.startsWith('58') : marks.includes(key))
 
       function render() {
         const t = T[lang]
         document.documentElement.lang = lang
-        document.title = `Yakiniku King Bangkok · ${{ th: 'เมนู', en: 'Menu', ja: 'メニュー' }[lang]}`
+        document.title = `Yakiniku King Thailand · ${{ th: 'เมนู', en: 'Menu', ja: 'メニュー', zh: '菜单' }[lang]}`
         document.querySelectorAll('[data-t]').forEach((el) => (el.textContent = t[el.dataset.t]))
         document.querySelectorAll('.langs button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.lang === lang))
 
         document.getElementById('courses').innerHTML = COURSES.map(
           (c) => `<button type="button" class="course" data-course="${c.key}" aria-pressed="${c.key === course}">
-            <img src="${c.img}" alt="" width="112" height="112" loading="lazy" />
-            <span>
+            <img src="${c.img}" alt="" loading="lazy" />
+            <span class="info">
               <span class="top"><h3>${esc(c.name[lang])}</h3><span class="price">฿${c.price.toLocaleString()}</span></span>
               <p>${esc(c.desc[lang])}</p>
-              <span class="tag">${esc(COUNT[lang](c.items))} · ${esc(c.key === course ? t.chosen : t.include)}</span>
+              <span class="tag">${esc(c.key === course ? t.chosen : t.include)}</span>
             </span>
           </button>`
         ).join('')
 
-        document.getElementById('chips').innerHTML = MENU.map(
-          (cat) => `<a href="#${cat.key}">${ICON[cat.icon]}${esc(cat.name[lang])}</a>`
+        // The signatures and premium cuts dim when the chosen course does not have them.
+        const rail = (list, marks) => list.map(
+          (d) => `<div class="sig${has(marks, course) ? '' : ' out'}">
+            <div class="pic"><img src="${d.img}" alt="" loading="lazy" /></div>
+            <div class="name"><small>${esc(marks === 'P' ? COURSES[2].name[lang] : t.sigTag)}</small>${esc(d.n[lang])}</div>
+          </div>`
         ).join('')
+        document.getElementById('signatures').innerHTML = rail(SIGNATURES, KP)
+        document.getElementById('premium').innerHTML = rail(PREMIUM, 'P')
+
+        document.getElementById('chips').innerHTML = MENU.map((cat) => `<a href="#${cat.key}">${esc(cat.name[lang])}</a>`).join('')
 
         document.getElementById('menu').innerHTML = MENU.map(
-          (cat) => `<section class="cat" id="${cat.key}">
-            <h2>${ICON[cat.icon]}${esc(cat.name[lang])}</h2>
-            <div class="items">${cat.items
-              .map((item) => {
-                const out = item.in && !item.in.includes(course)
-                const marks = item.in
-                  ? `<span class="in" aria-hidden="true">${['S', 'K', 'R'].map((k) => `<b class="${item.in.includes(k) ? 'on' : ''}">${k}</b>`).join('')}</span>`
-                  : ''
-                return `<div class="item${out ? ' out' : ''}">
-                  <span class="name">${esc(item.n[lang])}${item.hot ? `<span class="pop">${esc(t.hot)}</span>` : ''}${item.s ? `<span class="sub">${esc(item.s[lang])}</span>` : ''}</span>${marks}
-                </div>`
-              })
-              .join('')}</div>
-          </section>`
+          (cat) => `<section class="cat" id="${cat.key}"><div class="card">
+            ${cat.img
+              ? `<div class="photo"><img src="${cat.img}" alt="" loading="lazy" /><h3>${esc(cat.name[lang])}</h3></div>`
+              : `<h3 class="plain">${esc(cat.name[lang])}</h3>`}
+            <div class="items">${cat.items.map((item) => {
+              const out = item.in && !has(item.in, course)
+              const marks = item.in
+                ? `<span class="in" aria-hidden="true">${COURSE_KEYS.map((k) => `<b class="${has(item.in, k) ? 'on' : ''}">${MARK[k]}</b>`).join('')}</span>`
+                : ''
+              return `<div class="item${out ? ' out' : ''}"><span class="name">${esc(item.n[lang])}${item.hot ? `<span class="badge">${esc(t.popular)}</span>` : ''}${item.s ? `<span class="sub">${esc(item.s[lang])}</span>` : ''}</span>${marks}</div>`
+            }).join('')}</div>
+          </div></section>`
         ).join('')
       }
 
