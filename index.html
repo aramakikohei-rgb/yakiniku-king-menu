@@ -220,8 +220,11 @@
         aspect-ratio: 11 / 4;
         object-fit: cover;
       }
+      /* A span inside the card's button, so it is made a block: otherwise its side padding does not
+         hold and the words run to the card's edges. */
       .course .info {
-        padding: 12px 16px 16px;
+        display: block;
+        padding: 16px 22px 20px;
       }
       .course .top {
         display: flex;
